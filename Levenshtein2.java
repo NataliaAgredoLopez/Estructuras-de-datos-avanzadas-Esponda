@@ -4,7 +4,6 @@ import java.util.ArrayList;
 
 public class Levenshtein2 {
 
-    // Clase auxiliar para guardar resultados
     private static class Resultado {
         String s1;
         String s2;
@@ -24,13 +23,11 @@ public class Levenshtein2 {
     }
 
     public int distanciaDeCadenas(String s1, String s2) {
-        // Limpiar la lista cada vez que se llama desde el exterior
         listaResultados.clear();
         return distanciaRec(s1, s2);
     }
 
     private int distanciaRec(String s1, String s2) {
-        // Revisar si ya existe el resultado
         for (Resultado r : listaResultados) {
             if (r.s1.equals(s1) && r.s2.equals(s2)) {
                 return r.distancia;
@@ -50,9 +47,9 @@ public class Levenshtein2 {
             resultado = Math.min(res1, Math.min(res2, res3));
         }
 
-        // Guardar el resultado en la lista
         listaResultados.add(new Resultado(s1, s2, resultado));
 
         return resultado;
     }
+
 }
